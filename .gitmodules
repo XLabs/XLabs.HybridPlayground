@@ -1,0 +1,3 @@
+[submodule "Xamarin.Forms.Labs"]
+	path = Xamarin.Forms.Labs
+	url = https://github.com/XLabs/Xamarin-Forms-Labs
