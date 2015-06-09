@@ -1,0 +1,18 @@
+﻿<html>
+ <head>
+     <title>Title</title>
+ </head>
+ <body>
+    <div>Operating system:</div>
+    <div id="os">Not determined.</div>
+
+    <div id="deviceId"></div>
+    <div id="manufacturer"></div>
+ </body>
+ <script>
+    function myFunction(deviceInfo) {
+        document.getElementById("deviceId").innerHTML = deviceInfo.deviceId;
+        document.getElementById("manufacturer").innerHTML = deviceInfo.manufacturer;
+    }
+ </script>
+</html>
