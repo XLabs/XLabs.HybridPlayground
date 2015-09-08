@@ -10,10 +10,13 @@ using Microsoft.Phone.Shell;
 
 namespace XHybrid.WinPhone
 {
-    public partial class MainPage : global::Xamarin.Forms.Platform.WinPhone.FormsApplicationPage
+    using XLabs.Forms.Controls;
+
+    public partial class MainPage
     {
         public MainPage()
         {
+            var hybrid = new HybridWebViewRenderer();
             InitializeComponent();
             SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
 

@@ -7,37 +7,46 @@ using Xamarin.Forms;
 
 namespace XHybrid
 {
-	public class App : Application
-	{
-		public App ()
-		{
-			// The root page of your application
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							XAlign = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};
-		}
+    using XLabs.Forms.Controls;
+    using XLabs.Ioc;
+    using XLabs.Serialization;
+    using XLabs.Serialization.ServiceStack;
 
-		protected override void OnStart ()
-		{
-			// Handle when your app starts
-		}
+    public class App : Application
+    {
+        public App ()
+        {
+            SetIoc();
+            // The root page of your application
+            MainPage = new HybridSample();
+        }
 
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
+        protected override void OnStart ()
+        {
 
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
-		}
-	}
+
+
+        }
+
+        protected override void OnSleep ()
+        {
+            // Handle when your app sleeps
+        }
+
+        protected override void OnResume ()
+        {
+            // Handle when your app resumes
+        }
+
+        private void SetIoc()
+        {
+            if (Resolver.IsSet) return;
+
+            var resolverContainer = new SimpleContainer();
+
+            resolverContainer.Register<IJsonSerializer, JsonSerializer>();
+
+            Resolver.SetResolver(resolverContainer.GetResolver());
+        }
+    }
 }

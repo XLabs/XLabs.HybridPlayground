@@ -1,0 +1,68 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Hybrid Web Page</title>
+    </head>
+    <body>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <h1>HTML page</h1>
+        <div>
+            <button id="buttonAction" style="width: 100%; height: 60px" onclick="sendData(this.innerHTML)">Action to C#</button>
+        </div>
+        <div>
+            <button id="buttonFunc" style="width: 100%; height: 60px" onclick="sendFunc(this.innerHTML)">Func to C#</button>
+        </div>
+        <div>
+            <button id="buttonObject" style="width: 100%; height: 60px" onclick="sendObject()">Send object</button>
+        </div>
+        <br/>
+
+        <p id="res"></p>
+
+
+        <script type="text/javascript">
+
+            function logError(s) {
+                $('#res').text(s);
+            }
+
+            function sendData(o) {
+                try {
+                    Native("dataCallback", o);
+                } catch (err) {
+                    logError(err);
+                }
+            }
+
+            function sendFunc(o) {
+                try {
+                    NativeFunc("funcCallback", o, function (cbData) {
+                        Native("dataCallback", cbData);
+                    });
+                } catch (e) {
+                    logError(e);
+                } 
+            }
+
+            function sendObject() {
+                try {
+                    var o = { x: 5.6, y: 2.3 };
+                    Native("sendObject", o);
+                } catch (e) {
+                    logError(e);
+                }
+            }
+
+            //NativeFuncs = [];
+            
+            //function NativeFunc(action, data, callback){  
+            //    var callbackIdx = NativeFuncs.push(callback) - 1;
+            //    window.external.notify(JSON.stringify({ a: action, d: data, c: callbackIdx }));
+            //}
+            //if (typeof (window.NativeFuncsReady) !== 'undefined') {
+            //     window.NativeFuncsReady();
+            //}
+        </script>
+
+    </body>
+</html>
