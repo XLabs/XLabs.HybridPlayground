@@ -185,3 +185,4 @@ src/Xamarin.Forms.Labs/Xamarin.Forms.Labs.userprefs
 *.jf
 
 ReleaseBuild/*
+XHybrid/XHybrid.Droid/Resources/Resource.Designer.cs

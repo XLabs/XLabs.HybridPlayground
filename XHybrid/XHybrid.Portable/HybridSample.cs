@@ -49,7 +49,6 @@ namespace XHybrid
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             this.hybrid.LoadFromContent("www/WebHybridTest.html");
         }
 

@@ -10,10 +10,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HybridSample.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HybridWebViewTestPage.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PinGrid.html" />
   </ItemGroup>
 </Project>

@@ -16,6 +16,9 @@ namespace XHybrid.Droid
         {
             base.OnCreate(bundle);
 
+            XLabs.Forms.Controls.HybridWebViewRenderer.GetWebViewClientDelegate = r => new CustomClient(r);
+            XLabs.Forms.Controls.HybridWebViewRenderer.GetWebChromeClientDelegate = r => new CustomChromeClient();
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new XHybrid.App());
         }

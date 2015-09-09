@@ -130,8 +130,8 @@
                 var num;
                 var spans = document.getElementsByTagName("SPAN");
 
-                for (i = 0; i < spans.length; ++i) {
-                    num = nums[Math.floor(Math.random() * nums.length)];
+                for (var i = 0; i < spans.length; ++i) {
+                    num = nums[Math.floor(Math.random() * (nums.length -1))];
                     spans[i].innerHTML = num;
                 }
                 $('#progress-bar').val(0);
@@ -140,18 +140,18 @@
             var doProgress = function () {
                 if (parseInt($('#progress-bar').val()) < 150) {
                     $('#progress-bar').val(function () {
-                        return parseInt($('#progress-bar').val()) + 10
+                        return parseInt($('#progress-bar').val()) + 10;
                     });
                 } else {
-                    NativeFunc('getPinGridValues', null, function (returnData) {
+                    NativeFunc('getPinGridValues', 'test', function (returnData) {
                         buildNumbers(returnData);
                     });
                 }
             };
 
-            $(window.setInterval(function () {
-                doProgress();
-                    }, 1000))
+        $(window.setInterval(function() {
+            doProgress();
+        }, 1000));
     </script>
 </head>
 <body>

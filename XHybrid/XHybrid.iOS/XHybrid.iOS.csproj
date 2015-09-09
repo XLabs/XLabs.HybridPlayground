@@ -176,9 +176,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\XHybrid\PinGrid.html">
+      <Link>www\PinGrid.html</Link>
+    </Content>
     <Content Include="..\XHybrid\www\WebHybridTest.html">
       <Link>www\WebHybridTest.html</Link>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XHybrid.Portable\XHybrid.Portable.csproj">
+      <Project>{c4eccd32-3516-4226-8be5-8e765641fb17}</Project>
+      <Name>XHybrid.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\XHybrid\XHybrid.projitems" Label="Shared" Condition="Exists('..\XHybrid\XHybrid.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

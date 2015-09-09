@@ -133,6 +133,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\XHybrid\PinGrid.html">
+      <Link>www\PinGrid.html</Link>
+    </Content>
+    <Content Include="..\XHybrid\www\WebHybridTest.html">
+      <Link>www\WebHybridTest.html</Link>
+    </Content>
     <Content Include="Assets\BadgeLogo.png" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SplashScreen.png" />
@@ -168,7 +174,6 @@
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
-    <Content Include="www\WebHybridTest.html" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -241,6 +246,12 @@
       <HintPath>..\..\packages\XLabs.Serialization.ServiceStackV3.2.0.5726-pre6\lib\wp8\XLabs.Serialization.ServiceStack.WP8.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XHybrid.Portable\XHybrid.Portable.csproj">
+      <Project>{c4eccd32-3516-4226-8be5-8e765641fb17}</Project>
+      <Name>XHybrid.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\XHybrid\XHybrid.projitems" Label="Shared" Condition="Exists('..\XHybrid\XHybrid.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
