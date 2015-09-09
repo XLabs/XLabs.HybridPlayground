@@ -1,0 +1,186 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            margin: 40px;
+            background: black;
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 0 100px 0;
+        }
+
+        .pingrid {
+            margin: 20px auto;
+            width: 234px;
+            font-family: 'Open+Sans+Condensed', sans-serif;
+            font-weight: 700;
+            border: 0;
+            perspective: 400px;
+            perspective-origin: 40% 50%;
+            -webkit-perspective: 400px;
+            -webkit-perspective-origin: 40% 50%;
+        }
+
+            .pingrid span {
+                display: inline-block;
+                width: 31px;
+                height: 31px;
+                padding: 1px;
+                text-align: center;
+                line-height: 32px;
+                font-size: 20px;
+                margin: 1px;
+                transition: all 0.5s ease-out;
+                transform: rotateY(30deg);
+                -webkit-transition: all 0.5s ease-out;
+                -webkit-transform: rotateY(30deg);
+                /*get rid of jaggies*/
+                -webkit-backface-visibility: hidden;
+                -webkit-background-clip: content-box;
+            }
+
+            .pingrid .row span:first-child {
+                padding-left: 0;
+            }
+
+            .pingrid .row span:last-child {
+                padding-right: 0;
+            }
+
+            /*6x6 quarter top left corner*/
+            .pingrid.quarters .row:nth-child(-n+3) span:nth-child(-n+3) {
+                border: 2px solid red;
+                border-radius: 5px;
+                color: red;
+            }
+
+            /*6x6 quarter top right corner*/
+            .pingrid.quarters .row:nth-child(-n+3) span:nth-child(n+4) {
+                border: 2px solid #339933;
+                border-radius: 5px;
+                color: #339933;
+            }
+
+            /*6x6 quarter bottom left corner*/
+            .pingrid.quarters .row:nth-child(n+4) span:nth-child(-n+3) {
+                border: 2px solid #2469AD;
+                border-radius: 5px;
+                color: #2469AD;
+            }
+
+            /*6x6 quarter bottom right corner*/
+            .pingrid.quarters .row:nth-child(n+4) span:nth-child(n+4) {
+                border: 2px solid yellow;
+                border-radius: 5px;
+                color: yellow;
+            }
+
+            /*Delay*/
+            .pingrid .row span:nth-child(1) {
+                transition-delay: 0.6s;
+            }
+
+            .pingrid .row span:nth-child(2) {
+                transition-delay: 0.5s;
+            }
+
+            .pingrid .row span:nth-child(3) {
+                transition-delay: 0.4s;
+            }
+
+            .pingrid .row span:nth-child(4) {
+                transition-delay: 0.3s;
+            }
+
+            .pingrid .row span:nth-child(5) {
+                transition-delay: 0.2s;
+            }
+
+            .pingrid .row span:nth-child(6) {
+                transition-delay: 0.1s;
+            }
+
+        .progressBar {
+            margin: 20px auto;
+            width: 234px;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                setTimeout(function () {
+                    $('.pingrid span').css({
+                        transform: 'rotateY(0)',
+                        '-webkit-transform': 'rotateY(0)'
+                    });
+                }, 1000);
+        });
+
+            var buildNumbers = function (nums) {
+                var num;
+                var spans = document.getElementsByTagName("SPAN");
+
+                for (i = 0; i < spans.length; ++i) {
+                    num = nums[Math.floor(Math.random() * nums.length)];
+                    spans[i].innerHTML = num;
+                }
+                $('#progress-bar').val(0);
+            };
+
+            var doProgress = function () {
+                if (parseInt($('#progress-bar').val()) < 150) {
+                    $('#progress-bar').val(function () {
+                        return parseInt($('#progress-bar').val()) + 10
+                    });
+                } else {
+                    NativeFunc('getPinGridValues', null, function (returnData) {
+                        buildNumbers(returnData);
+                    });
+                }
+            };
+
+            $(window.setInterval(function () {
+                doProgress();
+                    }, 1000))
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="pingrid quarters">
+            <div class="row">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>2</span><span>4</span>
+            </div>
+            <div class="row">
+                <span>0</span><span>2</span><span>4</span><span>1</span><span>2</span><span>3</span>
+            </div>
+            <div class="row">
+                <span>4</span><span>2</span><span>5</span><span>1</span><span>4</span><span>0</span>
+            </div>
+            <div class="row">
+                <span>1</span><span>0</span><span>0</span><span>0</span><span>2</span><span>0</span>
+            </div>
+            <div class="row">
+                <span>1</span><span>4</span><span>5</span><span>3</span><span>5</span><span>5</span>
+            </div>
+            <div class="row">
+                <span>3</span><span>3</span><span>5</span><span>1</span><span>3</span><span>5</span>
+            </div>
+        </div>
+
+        <div class="pingrid">
+            <progress id="progress-bar" class="progressBar" value="1" max="150"></progress>
+        </div>
+    </div>
+</body>
+</html>

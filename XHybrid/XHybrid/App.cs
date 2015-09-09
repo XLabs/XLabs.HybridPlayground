@@ -18,7 +18,7 @@ namespace XHybrid
         {
             SetIoc();
             // The root page of your application
-            MainPage = new HybridSample();
+			MainPage = new HybridWebViewTestPage();
         }
 
         protected override void OnStart ()
