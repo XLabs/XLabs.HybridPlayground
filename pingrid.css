@@ -1,0 +1,131 @@
+body {
+            color: #fff;
+            background-color: #fff;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        .pingrid {
+            margin: 20px auto;
+            width: 204px;
+            font-family: 'Open+Sans+Condensed', sans-serif;
+            font-weight: 700;
+            border: 0;
+            perspective: 400px;
+            perspective-origin: 40% 50%;
+            -webkit-perspective: 400px;
+            -webkit-perspective-origin: 40% 50%;
+        }
+
+            .pingrid span {
+                display: inline-block;
+                background-color: #00b1d9;
+                width: 31px;
+                height: 31px;
+                padding: 1px;
+                color: #fff;
+                text-align: center;
+                line-height: 32px;
+                font-size: 14px;
+                margin: 0px;
+                transition: all 0.5s ease-out;
+                transform: rotateY(30deg);
+                -webkit-transition: all 0.5s ease-out;
+                -webkit-transform: rotateY(30deg);
+                /*get rid of jaggies*/
+                -webkit-backface-visibility: hidden;
+                -webkit-background-clip: content-box;
+            }
+
+            .pingrid:hover {
+            }
+
+            .pingrid.purple span {
+                background-color: #8f3fb0;
+            }
+
+            .pingrid .row span:first-child {
+                padding-left: 0;
+            }
+
+            .pingrid .row span:last-child {
+                padding-right: 0;
+            }
+
+            /*6x6 gutter*/
+            .pingrid .row span:nth-child(0n+3) {
+                padding-right: 3px;
+            }
+
+            .pingrid .row:nth-child(0n+3) {
+                padding-bottom: 2px;
+            }
+
+            /*6x6 alternate top right corner, alternate bottom left corner*/
+            .pingrid.alternate .row:nth-child(-n+3) span:nth-child(n+4),
+            .pingrid.alternate .row:nth-child(n+4) span:nth-child(-n+3) {
+                background-color: #8f3fb0;
+            }
+
+            /*6x6 quarter top left corner*/
+            .pingrid.quarters .row:nth-child(-n+3) span:nth-child(-n+3) {
+                background-color: #2d89ef;
+            }
+
+            /*6x6 quarter top right corner*/
+            .pingrid.quarters .row:nth-child(-n+3) span:nth-child(n+4) {
+                background-color: #6cb71d;
+            }
+
+            /*6x6 quarter bottom left corner*/
+            .pingrid.quarters .row:nth-child(n+4) span:nth-child(-n+3) {
+                background-color: #db552d;
+            }
+
+            /*6x6 quarter bottom right corner*/
+            .pingrid.quarters .row:nth-child(n+4) span:nth-child(n+4) {
+                background-color: #623dbd;
+            }
+
+            /*Delay*/
+            .pingrid .row span:nth-child(1) {
+                transition-delay: 0.6s;
+            }
+
+            .pingrid .row span:nth-child(2) {
+                transition-delay: 0.5s;
+            }
+
+            .pingrid .row span:nth-child(3) {
+                transition-delay: 0.4s;
+            }
+
+            .pingrid .row span:nth-child(4) {
+                transition-delay: 0.3s;
+            }
+
+            .pingrid .row span:nth-child(5) {
+                transition-delay: 0.2s;
+            }
+
+            .pingrid .row span:nth-child(6) {
+                transition-delay: 0.1s;
+            }
+
+        progress[value] {
+            /* Reset the default appearance */
+            -webkit-appearance: none;
+            width: 200px;
+            height: 20px;
+        }
+
+            progress[value]::-webkit-progress-value {
+                background: #f58122 !important;
+                color: #f58122 !important;
+            }
+
+            #progress-bar {
+                display: none;
+            }
